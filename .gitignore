@@ -1,0 +1,22 @@
+# Django-specific files
+db.sqlite3
+media/
+resumes/
+static/
+
+# Environment and Secrets
+.env
+venv/
+.venv/
+env/
+
+# IDE and Python artifacts
+.idea/
+.vscode/
+__pycache__/
+*.py[cod]
+*$py.class
+
+# OS-specific files
+.DS_Store
+Thumbs.db

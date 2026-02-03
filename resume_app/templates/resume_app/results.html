@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Resume Analysis Results</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; margin: 40px; color: #333; }
+        .container { max-width: 900px; margin: auto; }
+        .header { border-bottom: 2px solid #007bff; padding-bottom: 10px; margin-bottom: 20px; }
+        .section { margin-bottom: 30px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        th { background-color: #f4f4f4; }
+        .score-high { color: green; font-weight: bold; }
+        .score-med { color: orange; font-weight: bold; }
+        .tag { background: #e1f5fe; padding: 2px 8px; border-radius: 4px; margin-right: 5px; font-size: 0.9em; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Analysis for {{ name|default:"Candidate" }}</h1>
+            <p><strong>Email:</strong> {{ email|default:"Not found" }} | <strong>Phone:</strong> {{ phone|default:"Not found" }}</p>
+        </div>
+
+        <div class="section">
+            <h3>Extracted Skills</h3>
+            <div>
+                {% for skill in skills %}
+                    <span class="tag">{{ skill }}</span>
+                {% empty %}
+                    <p>No specific skills identified.</p>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="section">
+            <h3>Top Job Matches</h3>
+            {% if job_matches %}
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Job Title</th>
+                            <th>Role</th>
+                            <th>Match Score</th>
+                            <th>Matching Skills</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for match in job_matches %}
+                        <tr>
+                            <td>{{ match.title }}</td>
+                            <td>{{ match.role }}</td>
+                            <td class="{% if match.match_score >= 70 %}score-high{% else %}score-med{% endif %}">
+                                {{ match.match_score }}%
+                            </td>
+                            <td>
+                                {% for skill in match.matched_skills %}
+                                    <span class="tag">{{ skill }}</span>
+                                {% endfor %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <p>No jobs found with a sufficient skill match at this time.</p>
+            {% endif %}
+        </div>
+
+        <div class="section">
+            <h3>Resume Preview (Raw Text)</h3>
+            <div style="background: #f9f9f9; padding: 15px; border: 1px solid #eee; font-size: 0.85em; white-space: pre-wrap;">
+                {{ extracted_text }}...
+            </div>
+        </div>
+
+        <p><a href="{% url 'upload_resume' %}">← Upload another resume</a></p>
+    </div>
+</body>
+</html>
