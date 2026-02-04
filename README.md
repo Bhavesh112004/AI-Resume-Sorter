@@ -5,6 +5,7 @@ A professional **Natural Language Processing (NLP)** and **Optical Character Rec
 ## 📊 System Architecture
 
 ```mermaid
+
 graph TD
     A[User Uploads Resume] --> B{File Type?}
     B -->|Digital PDF/Docx| C[Direct Text Extraction]
@@ -14,6 +15,7 @@ graph TD
     E --> F[Tokenization & Stop-word Removal]
     F --> G[Ranking Engine]
     G --> H[Final Candidate Score
+
 
 ## 🚀 Key Features
 
