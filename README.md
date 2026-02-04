@@ -14,7 +14,7 @@ graph TD
     D --> E
     E --> F[Tokenization & Stop-word Removal]
     F --> G[Ranking Engine]
-    G --> H[Final Candidate Score
+    G --> H[Final Candidate Score]
 
 
 ## 🚀 Key Features
