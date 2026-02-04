@@ -3,6 +3,7 @@
 A professional **Natural Language Processing (NLP)** and **Optical Character Recognition (OCR)** system designed to automate and optimize the recruitment workflow. This project parses resumes in multiple formats, cleanses text using linguistic preprocessing, and ranks candidates based on semantic relevance to job descriptions.
 
 ## 📊 System Architecture
+
 ```mermaid
 graph TD
     A[User Uploads Resume] --> B{File Type?}
@@ -12,7 +13,7 @@ graph TD
     D --> E
     E --> F[Tokenization & Stop-word Removal]
     F --> G[Ranking Engine]
-    G --> H[Final Candidate Score]
+    G --> H[Final Candidate Score
 
 ## 🚀 Key Features
 
