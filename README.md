@@ -2,20 +2,6 @@
 
 A professional **Natural Language Processing (NLP)** and **Optical Character Recognition (OCR)** system designed to automate and optimize the recruitment workflow. This project parses resumes in multiple formats, cleanses text using linguistic preprocessing, and ranks candidates based on semantic relevance to job descriptions.
 
-## 📊 System Architecture
-
-```mermaid
-
-graph TD
-    A[User Uploads Resume] --> B{File Type?}
-    B -->|Digital PDF/Docx| C[Direct Text Extraction]
-    B -->|Scanned Image/PDF| D[Tesseract OCR Processing]
-    C --> E[NLTK Preprocessing]
-    D --> E
-    E --> F[Tokenization & Stop-word Removal]
-    F --> G[Ranking Engine]
-    G --> H[Final Candidate Score]
-
 
 ## 🚀 Key Features
 
@@ -35,15 +21,6 @@ graph TD
 * **File Handling**: PDFMiner.six, Mammoth, PyPDF2, Pillow, pdf2image
 * **Environment Management**: Python-Dotenv
 
-sequenceDiagram
-    participant R as Raw Text
-    participant T as Tokenizer
-    participant S as Stop-word Filter
-    participant K as Keyword Matcher
-    R->>T: Break text into tokens
-    T->>S: Remove noise (is, the, and)
-    S->>K: Extract technical skills
-    K->>K: Calculate Match Score
 
 ## 🧠 How It Works (The Logic)
 
